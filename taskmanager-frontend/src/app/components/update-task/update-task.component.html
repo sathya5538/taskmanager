@@ -1,0 +1,45 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4">✏️ Update Task</h2>
+
+  <form (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        [(ngModel)]="task.name"
+        class="form-control"
+        required
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea
+        id="description"
+        name="description"
+        [(ngModel)]="task.description"
+        class="form-control"
+        rows="3"
+        required
+      ></textarea>
+    </div>
+
+    <div class="form-check mb-3">
+      <input
+        type="checkbox"
+        id="completed"
+        name="completed"
+        [(ngModel)]="task.completed"
+        class="form-check-input"
+      />
+      <label class="form-check-label" for="completed">Completed</label>
+    </div>
+
+    <div class="text-center">
+      <button type="submit" class="btn btn-success me-3">Update Task</button>
+      <a routerLink="/tasks" class="btn btn-secondary">Cancel</a>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,43 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h1>📝 Task List</h1>
+    <a routerLink="/add-task" class="btn-task btn-primary">+ Add Task</a>
+  </div>
+
+  <h5 class="text-muted text-center mb-4">Total Tasks: {{ tasks.length }}</h5>
+
+  <table class="table table-bordered table-striped text-center">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of tasks">
+        <td>{{ task.id }}</td>
+        <td>{{ task.name }}</td>
+        <td>{{ task.description }}</td>
+        <td>
+          <span
+            class="badge"
+            [class.bg-success]="task.completed"
+            [class.bg-secondary]="!task.completed"
+          >
+            {{ task.completed ? 'Completed' : 'Pending' }}
+          </span>
+        </td>
+        <td>
+          <a [routerLink]="['/update-task', task.id]" class="btn-edit btn-smE">Edit</a>
+          <button (click)="deleteTask(task.id!)" class="btn-delete btn-sm btn-danger">Delete</button>
+        </td>
+      </tr>
+      <tr *ngIf="tasks.length === 0">
+        <td colspan="5" class="text-center text-muted">No tasks found 😕</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
